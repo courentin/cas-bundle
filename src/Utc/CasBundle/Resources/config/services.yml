@@ -1,4 +1,16 @@
 services:
-#    utc_cas.example:
-#        class: Utc\CasBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    utc_cas.security.cas_user_provider:
+        class: Utc\CasBundle\Security\CasUserProvider
+        arguments: ['@utc_cas.cas.client']
+
+    utc_cas.cas.cas:
+        class: Utc\CasBundle\Cas\Cas
+        arguments: ['%utc_cas.base_url%', '%utc_cas.login_path%', '%utc_cas.logout_path%', '%utc_cas.service_validate_path%']
+
+    utc_cas.security.cas_authenticator:
+        class: Utc\CasBundle\Security\CasAuthenticator
+        arguments: ['@utc_cas.cas.cas']
+
+    utc_cas.cas.client:
+        class: Utc\CasBundle\Cas\Client
+        arguments: ['@utc_cas.cas.cas']

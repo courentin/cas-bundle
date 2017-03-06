@@ -1,3 +1,6 @@
 utc_cas_homepage:
     path:     /
     defaults: { _controller: UtcCasBundle:Default:index }
+
+utc_cas_login:
+    path: /login

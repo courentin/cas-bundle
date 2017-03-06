@@ -19,6 +19,33 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('utc_cas');
+        $rootNode
+            ->children()
+                ->scalarNode('base_url')
+                    ->defaultValue('https://cas.utc.fr/cas/')
+                ->end()
+                ->scalarNode('login_path')
+                    ->defaultValue('login')
+                ->end()
+                ->scalarNode('logout_path')
+                    ->defaultValue('logout')
+                ->end()
+                ->scalarNode('service_validate_path')
+                    ->defaultValue('serviceValidate')
+                ->end()
+                ->scalarNode('ticket_field')
+                    ->defaultValue('ticket')
+                ->end()
+                ->scalarNode('service_field')
+                    ->defaultValue('service')
+                ->end()
+                ->scalarNode('success_path')
+                    ->isRequired()
+                ->end()
+            ->end()
+        ;
+
+
 
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for
